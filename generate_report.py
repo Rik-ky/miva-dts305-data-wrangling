@@ -5,7 +5,7 @@ Tutor-Marked Assessment: PDF Report Generator
 
 Student: Richard John
 Matric No: 2024/C/DSC/0548
-Email: rihard.john@miva.edu.ng
+Email: richard.john@miva.edu.ng
 GitHub: https://github.com/Rik-ky/miva-dts305-data-wrangling
 """
 
@@ -183,10 +183,10 @@ def generate_report():
         ],
         [
             Paragraph("<b>Department:</b>", body), Paragraph("Data Science", body),
-            Paragraph("<b>Institutional Email:</b>", body), Paragraph("rihard.john@miva.edu.ng", body)
+            Paragraph("<b>Institutional Email:</b>", body), Paragraph("richard.john@miva.edu.ng", body)
         ]
     ]
-    t_student = Table(student_info_data, colWidths=[1.7*72, 2.0*72, 1.7*72, 1.8*72])
+    t_student = Table(student_info_data, colWidths=[1.5*72, 1.7*72, 1.6*72, 2.4*72])
     t_student.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,-1), colors.HexColor("#f8fafc")),
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#cbd5e1")),
@@ -339,7 +339,7 @@ def generate_report():
     q1_code = """# ==============================================================================
 # Question 1: Tabular Data Cleaning and Revenue Analysis Pipeline
 # Course: MIVA-DTS 305 - Data Quality and Data Wrangling
-# Candidate: Richard John (2024/C/DSC/0548) | rihard.john@miva.edu.ng
+# Candidate: Richard John (2024/C/DSC/0548) | richard.john@miva.edu.ng
 # GitHub: https://github.com/Rik-ky/miva-dts305-data-wrangling
 # ==============================================================================
 import pandas as pd
@@ -572,7 +572,7 @@ plt.savefig('figures/q1_revenue_by_category.png', dpi=300)
     q2_code = """# ==============================================================================
 # Question 2: Web Scraping and Feature Engineering Pipeline
 # Course: MIVA-DTS 305 - Data Quality and Data Wrangling
-# Candidate: Richard John (2024/C/DSC/0548) | rihard.john@miva.edu.ng
+# Candidate: Richard John (2024/C/DSC/0548) | richard.john@miva.edu.ng
 # GitHub: https://github.com/Rik-ky/miva-dts305-data-wrangling
 # ==============================================================================
 import requests

@@ -6,7 +6,7 @@
 - **Full Name:** Richard John
 - **Matriculation / Reg Number:** 2024/C/DSC/0548
 - **Department:** Data Science
-- **Email:** rihard.john@miva.edu.ng
+- **Email:** richard.john@miva.edu.ng
 - **Institution:** Miva Open University
 
 ---

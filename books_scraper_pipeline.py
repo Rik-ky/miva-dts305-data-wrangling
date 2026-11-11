@@ -5,7 +5,7 @@ Tutor-Marked Assessment: Question 2 Solution
 
 Student: Richard John
 Matric No: 2024/C/DSC/0548
-Email: rihard.john@miva.edu.ng
+Email: richard.john@miva.edu.ng
 """
 
 import requests
