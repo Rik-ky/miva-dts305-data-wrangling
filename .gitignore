@@ -1,0 +1,10 @@
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+*.png.png
+test_*
+template_extracted.png
+template_banner.png
+template_footer.png
+miva_logo_crop.png
