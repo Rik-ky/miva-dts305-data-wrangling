@@ -228,10 +228,10 @@ def generate_report():
     story.append(Paragraph(q1_desc, body))
     story.append(Spacer(1, 4))
 
-    story.append(Paragraph("Data Quality Remediation Tasks:", title_h2))
+    story.append(Paragraph("Data Quality Remediation Process:", title_h2))
 
     task1 = (
-        "<b>1. Handle missing values in the Total Amount column:</b><br/>"
+        "<b>1. Imputation of Missing Total Amount Values:</b><br/>"
         "An initial diagnostic audit identified 19 missing values (19.0%) in <code>Total Amount</code>. "
         "Because order totals are mathematically determined by unit volume and price "
         "(<code>Total Amount = Quantity * Price</code>), this relationship was verified across all 81 non-null rows "
@@ -241,14 +241,14 @@ def generate_report():
     story.append(Paragraph(f"● {task1}", bullet_p))
 
     task2 = (
-        "<b>2. Remove duplicate rows:</b><br/>"
+        "<b>2. Duplicate Record Verification:</b><br/>"
         "A duplicate check across all attributes (<code>df.duplicated().sum()</code>) confirmed 0 duplicate rows. "
         "All 100 records represent distinct orders and were retained."
     )
     story.append(Paragraph(f"● {task2}", bullet_p))
 
     task3 = (
-        "<b>3. Standardise formatting in the Country column:</b><br/>"
+        "<b>3. Standardisation of Country Labels:</b><br/>"
         "The raw column contained three variations: <code>'United States'</code> (43 orders), <code>'usa'</code> (30 orders), "
         "and <code>'U.S.A.'</code> (27 orders). All entries were harmonised to <code>'United States'</code>. "
         "The cleaned dataset was saved as <code>data/customer_orders_cleaned.csv</code>."
@@ -300,11 +300,11 @@ def generate_report():
     # ==============================================================================
     # PAGE 3: QUESTION 1 CRITICAL COUNTRY REVENUE ANALYSIS & COMPARATIVE CHART
     # ==============================================================================
-    story.append(Paragraph("Critical Evaluation: 'Top 3 Countries by Total Revenue'", title_h1))
+    story.append(Paragraph("Critical Evaluation: Country Revenue Distribution", title_h1))
     
     country_discussion = (
-        "The assignment specifically asks learners to: <i>'Identify and plot the top 3 countries by total revenue.'</i> "
-        "This instruction highlights an essential real-world data quality lesson regarding categorical aggregation:<br/><br/>"
+        "Evaluating revenue distribution across the top three countries highlights an essential real-world "
+        "data quality principle regarding categorical aggregation:<br/><br/>"
         "● <b>Before Standardisation (The Analytical Trap):</b> Grouping raw data produces three pseudo-countries: "
         "(1) <code>United States</code> ($13,285.64; 43 orders), (2) <code>U.S.A.</code> ($9,468.40; 27 orders), "
         "and (3) <code>usa</code> ($8,383.12; 30 orders). If an analyst does not clean the data first, they would erroneously "
@@ -415,10 +415,10 @@ plt.savefig('figures/q1_revenue_by_category.png', dpi=300)
         "we extracted all book listings displayed on the homepage. For each book pod, four core attributes were scraped: "
         "<code>Title</code> (full title from the anchor <code>title</code> attribute), <code>Price</code> (from <code>&lt;p class='price_color'&gt;</code>), "
         "<code>Rating</code> (extracted from star-rating class), and <code>Availability status</code>.<br/><br/>"
-        "<b>Cleaning & Feature Engineering Steps:</b><br/>"
-        "● <b>Convert prices:</b> Stripped currency symbols (<code>£</code>) and encoding artifacts (<code>Â£</code>), casting to float.<br/>"
-        "● <b>Map ratings:</b> Qualitative star rating text was mapped to integers: <code>{'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5}</code>.<br/>"
-        "● <b>Engineer Affordability:</b> Books with <code>Price &lt; £20</code> were classified as <b>'Affordable'</b>, while books with "
+        "<b>Cleaning & Feature Engineering Methodology:</b><br/>"
+        "● <b>Price Conversion:</b> Stripped currency symbols (<code>£</code>) and encoding artifacts (<code>Â£</code>), casting to float.<br/>"
+        "● <b>Rating Mapping:</b> Qualitative star rating text was mapped to integers: <code>{'One': 1, 'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5}</code>.<br/>"
+        "● <b>Affordability Classification:</b> Books with <code>Price &lt; £20</code> were classified as <b>'Affordable'</b>, while books with "
         "<code>Price ≥ £20</code> were categorized as <b>'Expensive'</b>. Cleaned data was saved as <code>data/books_scraped_cleaned.csv</code>."
     )
     story.append(Paragraph(q2_desc, body))
@@ -433,7 +433,7 @@ plt.savefig('figures/q1_revenue_by_category.png', dpi=300)
     ]
     for idx in range(10):
         r = df_books.iloc[idx]
-        disp_title = r['Title'][:36] + ('...' if len(r['Title']) > 36 else '')
+        disp_title = r['Title'][:34] + ('...' if len(r['Title']) > 34 else '')
         aff_col = "#15803d" if r['Affordability'] == 'Affordable' else "#b91c1c"
         aff_str = f"<b><font color='{aff_col}'>{r['Affordability']}</font></b>"
         books_data_p1.append([
@@ -446,7 +446,7 @@ plt.savefig('figures/q1_revenue_by_category.png', dpi=300)
             Paragraph(str(r['Availability']), tbl_cell_center)
         ])
 
-    t_b1 = Table(books_data_p1, colWidths=[0.3*72, 2.5*72, 0.8*72, 0.8*72, 0.7*72, 1.1*72, 1.0*72])
+    t_b1 = Table(books_data_p1, colWidths=[0.4*72, 2.4*72, 0.8*72, 0.8*72, 0.7*72, 1.1*72, 1.0*72])
     t_b1.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#09304f")),
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#cbd5e1")),
@@ -471,7 +471,7 @@ plt.savefig('figures/q1_revenue_by_category.png', dpi=300)
     ]
     for idx in range(10, 20):
         r = df_books.iloc[idx]
-        disp_title = r['Title'][:36] + ('...' if len(r['Title']) > 36 else '')
+        disp_title = r['Title'][:34] + ('...' if len(r['Title']) > 34 else '')
         aff_col = "#15803d" if r['Affordability'] == 'Affordable' else "#b91c1c"
         aff_str = f"<b><font color='{aff_col}'>{r['Affordability']}</font></b>"
         books_data_p2.append([
@@ -484,7 +484,7 @@ plt.savefig('figures/q1_revenue_by_category.png', dpi=300)
             Paragraph(str(r['Availability']), tbl_cell_center)
         ])
 
-    t_b2 = Table(books_data_p2, colWidths=[0.3*72, 2.5*72, 0.8*72, 0.8*72, 0.7*72, 1.1*72, 1.0*72])
+    t_b2 = Table(books_data_p2, colWidths=[0.4*72, 2.4*72, 0.8*72, 0.8*72, 0.7*72, 1.1*72, 1.0*72])
     t_b2.setStyle(TableStyle([
         ('BACKGROUND', (0,0), (-1,0), colors.HexColor("#09304f")),
         ('BOX', (0,0), (-1,-1), 1, colors.HexColor("#cbd5e1")),
